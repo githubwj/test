@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://pub.idqqimg.com/qqmobile/qqapi.test.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Mobile JS API Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style type="text/css" media="screen">
+    	button.btn{
+    		margin: 5px;
+    	}
+    </style>
+</head>
+<body style="background: #fff">
+	<h1 class="text-center">Mobile JS API Demo</h1>
+	<hr>
+	<button class="btn btn-primary" onclick="cpInstall()">彩票是否安装</button>检查网易彩票是否安x装<br/>
+    <button class="btn btn-primary" onclick="openCp()">打开彩票网易彩票</button>打开应用<br/>-
+   
+<script>
+function mappEnv() {
+   alert(JSON.stringify(mapp));
+}
+
+function clear(){
+	$('#textarea').val('');
+	log(location.href);
+}
+
+function cpInstall() {
+	CPJsApi.common.isAppInstalled({
+		'scheme' : {
+			'android' : 'com.netease.caipiao',
+			'ios' : 'caipiao'
+		}
+	}, function (result) {
+		if (result == 0)
+			alert('安装了');
+		else
+			alert('没安装');
+	});
+}
+
+function openCp() {
+	CPJsApi.common.openurl({
+		'url' : {
+			"android" : "com.netease.caipiao"
+		}
+	}, function (result) {
+		alert(result);
+	});
+}
+
+</script></body></html> 
