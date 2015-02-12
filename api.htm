@@ -14,7 +14,8 @@
 	<h1 class="text-center">Mobile JS API Demo</h1>
 	<hr>
 	<button class="btn btn-primary" onclick="cpInstall()">彩票是否安装</button>检查网易彩票是否安x装<br/>
-    <button class="btn btn-primary" onclick="openCp()">打开彩票网易彩票</button>打开应用<br/>-
+    <button class="btn btn-primary" onclick="openCp()">打开彩票网易彩票</button>打开应用<br/>
+    <button class="btn btn-primary" onclick="toOtherPage()">跳转走了</button>打开应用<br/>-
    
 <script>
 function mappEnv() {
@@ -38,6 +39,10 @@ function cpInstall() {
 		else
 			alert('没安装');
 	});
+}
+
+function toOtherPage(){
+	window.open("http://www.baidu.com");
 }
 
 function openCp() {
