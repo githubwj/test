@@ -19,34 +19,6 @@
     <button class="btn btn-primary" onclick="toOtherPage()">跳转走了</button>打开应用<br/>-
    
 <script>
-function mappEnv() {
-   alert(JSON.stringify(mapp));
-}	
-
-function clear(){
-	$('#textarea').val('');
-	log(location.href);
-}
-function isiOS() {
-	var ua = navigator.userAgent;
-
-	if (ua.indexOf('iPhone OS') > 0) {
-		return 1;
-	}
-
-	return 0;
-}
-
-function isAndroid() {
-	var ua = navigator.userAgent;
-
-	if (ua.indexOf('Android') > 0) {
-		return 1;
-	}
-
-	return 0;
-}
-
 function cpInstall() {
 	CPJsApi.common.isappinstalled({
 		'scheme' : {
@@ -61,7 +33,7 @@ function cpInstall() {
 	});
 }
 
-function toOtherPage(){
+function toOtherPage() {
 	window.open("http://www.baidu.com");
 }
 
@@ -75,26 +47,4 @@ function openCp() {
 	});
 }
 
-
-var CPJsApi = {};
-CPJsApi.common = {};
-var CPJsBridge = window.CPJsBridge;
-
-CPJsApi.common.isappinstalled = function (params, callback) {
-	if (isiOS()) {
-		CPJsBridge.invoke('isappinstalled', params, callback);
-	}
-	if (isAndroid()) {
-		CPJsBridge.common.isAppInstalled(params, callback);
-	}
-}
-
-CPJsApi.common.openurl = function (params, callback) {
-	if (isiOS()) {
-		CPJsBridge.invoke('openurl', params, callback);
-	}
-	if (isAndroid()) {
-		CPJsBridge.common.openurl(params, callback);
-	}
-}
 </script></body></html> 
