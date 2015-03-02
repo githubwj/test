@@ -44,7 +44,9 @@ function isAndroid() {
 
 var CPJsApi = {};
 CPJsApi.common = {};
-var CPJsBridge = window.CPJsBridge;
+var CPJsBridge = window.mapp;
+alert(CPJsBridge);
+alert('123');
 
 CPJsApi.common.isappinstalled = function (params, callback) {
 	if (isiOS()) {
