@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>jsbridge</title>
+<script>
+function isCpInstall() {
+	window.YixinJSBridge.invoke('isappinstalled', {
+		'scheme' : {
+			'android' : 'com.netease.caipiao',
+			'ios' : 'caipiao'
+		}
+	}, function (e) {
+		//alert(JSON.stringify(e))
+		if (e.result == 0)
+			alert('安装了');
+		else
+			alert('没安装');
+	}, function () {});
+}
+function openCp() {
+	window.YixinJSBridge.invoke('openurl', {
+		'url' : {
+			"android" : "com.netease.caipiao"
+		}
+	},
+		function (e) {
+		//alert(JSON.stringify(e))
+	}, function () {});
+}
+
+	</script>
+	</head>
+			<body>
+				<form action="" >
+					<input type="button" id="button1" onclick="isCpInstall()" value="是否安装彩票"/>
+					<input type="button" id="button2" onclick="openCp()" value="打开彩票"/>
+				</form>
+				</body>
+	</html>
