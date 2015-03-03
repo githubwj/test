@@ -1,50 +1,48 @@
-<!DOCTYPE html>
-<!-- saved from url=(0047)http://pub.idqqimg.com/qqmobile/qqapi.test.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>
+            Mobile JS API Demo
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <style type="text/css" media="screen">
+		button.btn{
+		            margin: 5px;
+		        }
+        </style>
+        <script src="cp_public_api.js" type="text/javascript"></script>
+    </head>
+    <body style="background: #fff">
+        <h1 class="text-center">
+            Mobile JS API Demo
+        </h1>
+        <hr>
+       手机QQ
+            <input class="btn btn-primary" type="button" id="game1" value="下载" onclick="clickBt(this)">
+<script type = "text/javascript" >
+	document.addEventListener("CPJsBridgeReady", function () {
+		var btn = document.getElementById("game1");
+		CPJsApi.common.isappinstalled({
+			'scheme' : 'com.tencent.mobileqq',
+		}, function (result) {
+			if (result == 0)
+				btn.value = "打开";
+			else
+				btn.value = "下载";
+		});
+	}, false);
 
-    <title>Mobile JS API Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <style type="text/css" media="screen">
-    	button.btn{
-    		margin: 5px;
-    	}
-    </style>
-    <script src="cp_public_api.js"></script>
-</head>
-<body style="background: #fff">
-	<h1 class="text-center">Mobile JS API Demo</h1>
-	<hr>
-	<button class="btn btn-primary" onclick="cpInstall()">彩票是否安装</button>检查网易彩票是否安x装<br/>
-    <button class="btn btn-primary" onclick="openCp()">打开彩票网易彩票</button>打开应用<br/>
-    <button class="btn btn-primary" onclick="toOtherPage()">跳转走了</button>打开应用<br/>-
-   
-<script>
-function cpInstall() {
-	CPJsApi.common.isappinstalled({
-		'scheme' : {
-			'android' : 'com.netease.caipiao',
-			'ios' : 'caipiao'
+	function clickBt(bt) {
+		if(bt.value== "下载"){
+			window.open("http://gdown.baidu.com/data/wisegame/4f9b25fb0e093ac6/QQ_220.apk");
+		}else if(bt.value== "打开"){
+			CPJsApi.common.openurl({
+				"scheme" : "com.tencent.mobileqq"
+			}, function (result) {});
 		}
-	}, function (result) {
-		if (result == 0)
-			alert('安装了');
-		else
-			alert('没安装');
-	});
-}
+	}
 
-function toOtherPage() {
-	window.open("http://www.baidu.com");
-}
+</script>
 
-function openCp() {
-	CPJsApi.common.openurl({
-		'url' : {
-			"android" : "com.netease.caipiao"
-		}
-	}, function (result) {
-		alert(result);
-	});
-}
-
-</script></body></html> 
+    </body>
+</html>
